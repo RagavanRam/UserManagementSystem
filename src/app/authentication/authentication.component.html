@@ -1,0 +1,47 @@
+<div *ngIf="isLoading" class="mt-5 container offset-md-3 col-md-6 text-center">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+
+<form
+  class="mt-5 container offset-md-3 col-md-6"
+  [formGroup]="LoginForm"
+  (ngSubmit)="onSubmit()"
+  *ngIf="!isLoading"
+>
+  <div *ngIf="error">
+    <p>
+      <ngb-alert type="danger" (click)="close()">{{ error }}</ngb-alert>
+    </p>
+  </div>
+
+  <label for="name" class="from-label mb-2 ms-1 fw-bold">Email ID</label>
+  <input
+    class="form-control mb-3"
+    type="text"
+    id="name"
+    formControlName="email"
+  />
+
+  <label for="password" class="from-label mb-2 ms-1 fw-bold">Password</label>
+  <div class="input-group mb-3">
+    <input
+      [type]="show ? 'text' : 'password'"
+      class="form-control"
+      id="password"
+      aria-describedby="basic-addon2"
+      formControlName="password"
+    />
+    <button class="input-group-text" type="button" (click)="showPassword()">
+      <i class="bi bi-eye-fill"></i>
+    </button>
+  </div>
+
+  <div class="text-end">
+    <button class="btn btn-success me-2" [disabled]="!LoginForm.valid">
+      Login
+    </button>
+    <button class="btn btn-danger" type="button" (click)="onCancel()">
+      cancel
+    </button>
+  </div>
+</form>

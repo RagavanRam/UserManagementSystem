@@ -1,0 +1,12 @@
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+@media only screen and (max-width: 767px) {
+  a.nav-link {
+    text-align: center;
+  }
+}

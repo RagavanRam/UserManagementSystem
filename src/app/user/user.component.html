@@ -1,0 +1,55 @@
+<form
+  class="mt-5 container offset-md-3 col-md-6"
+  [formGroup]="userForm"
+  (ngSubmit)="onSubmit()"
+>
+  <label for="name" class="from-label mb-2 ms-1 fw-bold">User Name</label>
+  <input
+    class="form-control mb-3"
+    type="text"
+    id="name"
+    formControlName="name"
+  />
+
+  <label for="password" class="from-label mb-2 ms-1 fw-bold">Password</label>
+  <div class="input-group mb-3">
+    <input
+      [type]="show ? 'text' : 'password'"
+      class="form-control"
+      id="password"
+      aria-describedby="basic-addon2"
+      formControlName="password"
+    />
+    <button class="input-group-text" type="button" (click)="showPassword()">
+      <i class="bi bi-eye-fill"></i>
+    </button>
+  </div>
+
+  <label for="email" class="from-label mb-2 ms-1 fw-bold">Email</label>
+  <input
+    class="form-control mb-3"
+    type="text"
+    id="email"
+    formControlName="email"
+  />
+
+  <label for="role" class="from-label mb-2 ms-1 fw-bold">Select Role</label>
+  <select
+    class="form-select mb-3"
+    aria-label="Default select example"
+    id="role"
+    formControlName="role"
+  >
+    <option value="admin">Admin</option>
+    <option value="user">User</option>
+  </select>
+
+  <div class="text-end">
+    <button class="btn btn-success me-2" [disabled]="!userForm.valid">
+      {{ editMode ? "Update" : "Add" }}
+    </button>
+    <button class="btn btn-danger" type="button" (click)="onCancel()">
+      cancel
+    </button>
+  </div>
+</form>

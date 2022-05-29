@@ -1,0 +1,42 @@
+<div class="mt-5 container">
+  <button class="btn btn-primary mb-3" (click)="addUser()">Add New User</button>
+  <table class="table bg-secondary text-light rounded">
+    <thead>
+      <tr class="text-center">
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col" class="hide">Password</th>
+        <th scope="col" class="hide">Email</th>
+        <th scope="col">Role</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="text-center" *ngFor="let user of users; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ user.name }}</td>
+        <td class="hide fs-4">
+          {{ user.password | password }}
+        </td>
+        <td class="hide">{{ user.email }}</td>
+        <td>{{ user.role }}</td>
+        <td>
+          <button
+            class="btn btn-light me-1 mb-1"
+            [disabled]="toedit(user)"
+            (click)="onEdit(i)"
+          >
+            <i class="bi bi-pencil-square"></i>
+          </button>
+          <button
+            class="btn btn-light mb-1"
+            [disabled]="todelete(user)"
+            (click)="onDelete(user)"
+          >
+            <i class="bi bi-trash3"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
