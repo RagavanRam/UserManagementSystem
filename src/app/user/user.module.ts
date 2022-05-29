@@ -19,8 +19,7 @@ import { AuthGuard } from '../authentication/auth.guard';
   imports: [
     SharedModule,
     ReactiveFormsModule,
-    RouterModule.forChild([{path: '', component: UserComponent, canActivate: [AuthGuard]},
-    {path: 'edit-user/:id', component: UserComponent, resolve: [UserResolver], canActivate: [AuthGuard]},])
+    RouterModule.forChild([{path: '', component: UserComponent, canActivate: [AuthGuard]}])
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}]
 })

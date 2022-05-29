@@ -17,7 +17,7 @@ import { AuthenticationComponent } from './authentication.component';
     HttpClientModule,
     ReactiveFormsModule,
     NgbModule,
-    RouterModule.forChild([{path: 'authentication', component: AuthenticationComponent}]),
+    RouterModule.forChild([{path: '', component: AuthenticationComponent}]),
   ]
 })
 export class AuthenticationModule { }
